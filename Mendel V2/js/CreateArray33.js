@@ -33,7 +33,7 @@ document.getElementById("editOptions").style.display="block"
                 tempObj[i][j]=gametaII[j-1][0]//! Gameta da mãe, Vertical
                 }
                 if(i>=1 && j>=1){
-            tempObj[i][j]= caps(gametaI[j-1][0],gametaII[j-1][0],1)//! Populações
+            tempObj[i][j]= caps(gametaI[i-1][0],gametaII[j-1][0],1)//! Populações
     
             }
         } 
