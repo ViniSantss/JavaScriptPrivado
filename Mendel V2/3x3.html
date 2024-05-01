@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="icon" href="css/icon.jpg">
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/jquery.js"></script>
+    <title>Mendel Legacy</title>
+    <style>
+      #Alelos2, #Option3,#Option4,#Option7,#Option8{
+  display: none;
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar bg-body-tertiary bg-secondary-subtle">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="css/icon.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+            Mendel Legacy
+          </a>
+          <ul class="nav justify-content-end">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">Leis de Mendel</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="index.html">Quadro de Punnett 5x5</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" aria-disabled="true" href="#">Quadro de Punnett 3x3</a>
+            </li>
+            
+          </ul>
+        </div>
+      </nav>
+    <div class="container edit" id="Alelos"></div>
+    <div class="edit"  id="editAlelos" style="background-color: rgb(206, 206, 206);display: none;">
+        <br>
+            <div class="d-grid gap-2 col-3 mx-auto">
+            <button class="btn btn-success" type="button" onclick="EditAlelos()">Editar Alelos</button>
+        </div>
+        <br>
+    </div>
+        <div class="edit" id="Options"></div>
+        <div class="edit"  id="editOptions" style="background-color: rgb(206, 206, 206);display: none;">
+           
+            <br>
+                <div class="d-grid gap-2 col-3 mx-auto">
+                <button class="btn btn-success" type="button" onclick="EditOptions()">Editar Progenitores</button>
+            </div>
+            <br>
+        </div>
+        <br>
+        <div class="container text-center " >
+            <div class="row edit">
+                <div class="col-md-auto"><div id="array"></div></div>
+                <div class="col-md-auto" id="Infors"></div>
+              </div>
+
+        </div>
+        
+</body>
+<script src="js/WriteAlelos.js"></script>
+<script src="js/microLetra.js"></script>
+<script src="js/WriteOptions.js"></script>
+<script src="js/Write.js"></script>
+<script src="js/CreateArray33.js"></script>
+<script src="js/Main.js"></script>
+</html>

@@ -1,0 +1,52 @@
+
+#array, h2{
+    position: relative;
+    
+    width: max-content;
+}
+
+
+
+select{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.cell{
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-flex;
+    justify-content: center;
+    
+    width: 80px;
+    height: 80px;
+    border: #3d3d3d 1px solid;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: start;
+}
+
+
+  .cell .tooltiptext {
+    visibility: hidden;
+    width: max-content;
+    background-color: #0d0e13;
+    color: #a881e2;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 5px;
+    margin-top: -30px;
+    position: absolute;
+    z-index: 1;
+  }
+  
+  .cell:hover .tooltiptext {
+    visibility: visible;
+  }
+
+  @keyframes slideaway {
+    0% { transform: translateY(100%); opacity: 0;}
+    100% { transform: translateY(0%); opacity: 100;}
+  }
+  
+  .edit {
+    transform: translateY(0%);
+    animation: slideaway 200ms;
+  }
