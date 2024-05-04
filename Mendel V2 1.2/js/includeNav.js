@@ -32,7 +32,7 @@ document.getElementById("nav").outerHTML=
             </a>
             <ul class="dropdown-menu dropdown-menu-dark">
               <li><a class="dropdown-item" href="2x2.html">2x2</a></li>
-              <li><a class="dropdown-item" href="index.html">4x4</a></li>
+              <li><a class="dropdown-item" href="4x4.html">4x4</a></li>
               
             </ul>
           </li>
