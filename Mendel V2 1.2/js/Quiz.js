@@ -37,7 +37,7 @@ function drophover(Cell) {
     if(ImgCell !=null){
     ImgCell.style.border="none"
     if(EmptyCell !=null){
-    EmptyCell.innerHTML=ImgCell.outerHTML
+    EmptyCell.innerHTML='<img src='+ImgCell.src+'>'
     EmptyCell = null;
     ImgCell = null;
   }
