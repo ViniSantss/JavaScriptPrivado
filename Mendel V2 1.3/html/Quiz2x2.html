@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="icon" href="../css/icon.jpg">
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../bootstrap/js/jquery.js"></script>
+    <title>Mendel Legacy</title>
+    <style>
+      #Alelos2, #Option3,#Option4,#Option7,#Option8{
+  display: none;
+}
+    </style>
+</head>
+<body>
+    <nav id="nav"></nav>
+      <p>ºQuiz: Dois pares de coelhos tiveram uma ninhada, dito que "c" define a coloração de pelo branco, e C define a coloração negra, sendo branco uma caracteristica resseciva</p>
+    <hr>
+
+    <div class="container edit" id="Alelos" style="display: none;"></div>
+    <div id="editAlelos"></div>
+        <div class="edit" id="Options"></div>
+        <div class="edit"  id="editOptions" style="background-color: rgb(206, 206, 206);display: none;">
+           
+            <br>
+                <div class="d-grid gap-2 col-3 mx-auto">
+                <button class="btn btn-success" type="button" onclick="EditOptions()">Editar Progenitores</button>
+            </div>
+            <br>
+        </div>
+        <br>
+        <div class="container text-center" id="Table" style="display: none;">
+          <div id="foto" class="cell" ><img src="../img/CoelhoNegro.png" draggable="true" ondragend="drop()" ondragstart="drag(this)" onclick="dragMobile(this)"><img  src="../img/CoelhoBranco.png" draggable="true" ondragend="drop(this)" ondragstart="drag(this)" onclick="dragMobile(this)"></div>
+
+            <div class="row edit">
+
+                <div class="col-md-auto"><div id="array"></div></div>
+                <div class="col-md-auto" id="Infors">
+
+              
+
+                </div>
+              </div>
+              <button class="btn btn-success" type="button" onclick="test()">Testar</button>
+        </div>
+        
+</body>
+<script src="../js/includeNav.js"></script>
+<script src="../js/WriteAlelos.js"></script>
+<script src="../js/microLetra.js"></script>
+<script src="../js/WriteOptions.js"></script>
+<script src="../js/Quiz.js"></script>
+<script src="../js/CreateArray33.js"></script>
+<script src="../js/Main.js"></script>
+<script>
+AlelosName1=["c","C"]
+WriteAlelos()
+WriteOptions()</script>
+</html>
