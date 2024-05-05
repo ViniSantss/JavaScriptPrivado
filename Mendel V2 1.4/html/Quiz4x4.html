@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="icon" href="../css/icon.jpg">
+
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="../bootstrap/js/jquery.js"></script>
+    <title>Mendel Legacy</title>
+</head>
+<body>
+    <nav id="nav"></nav>
+      <p id="questao" class="edit"></p>
+    <hr>
+    <div class="container edit" id="Lista" >
+  <p>Escolha uma especie para começar:</p>
+      <button type="button" onclick='Lista("Coelhos2")' class="btn btn-outline-danger">Coelhos(AᶜAⁿmm)</button><br>
+      <button type="button" onclick='Lista("Arvores1")' class="btn btn-outline-warning">Arvores(BbFf)</button><br>
+      <button type="button" onclick='Lista("Ervilhas1")' class="btn btn-outline-warning">Ervilhas(LlVv)</button>
+    </div>
+    <div class="edit"  id="editEspecie" style="background-color: rgb(206, 206, 206);display: none;">
+           
+      <br>
+          <div class="d-grid gap-2 col-3 mx-auto">
+          <button class="btn btn-success" type="button" onclick="editEspecie()">Editar Especie</button>
+      </div>
+      <br>
+  </div>
+    <div class="container edit" id="Alelos" style="display: none;"></div>
+    <div id="editAlelos"></div>
+        <div class="edit" id="Options"></div>
+        <div class="edit"  id="editOptions" style="background-color: rgb(206, 206, 206);display: none;">
+           
+            <br>
+                <div class="d-grid gap-2 col-3 mx-auto">
+                <button class="btn btn-success" type="button" onclick="EditOptions()">Editar Progenitores</button>
+            </div>
+            <br>
+        </div>
+        <br>
+        <div class="container text-center" id="Table" style="display: none;">
+          <div id="foto" class="cell" >
+            <img src="../img/Sementes/SemArmLis.png" draggable="true" ondragend="drop()" ondragstart="drag(this)" onclick="dragMobile(this)">
+            <img src="../img/Sementes/SemArmRug.png" draggable="true" ondragend="drop()" ondragstart="drag(this)" onclick="dragMobile(this)">
+            <img src="../img/Sementes/SemVerLis.png" draggable="true" ondragend="drop()" ondragstart="drag(this)" onclick="dragMobile(this)">
+            <img src="../img/Sementes/SemVerRug.png" draggable="true" ondragend="drop()" ondragstart="drag(this)"onclick="dragMobile(this)">
+          </div>
+
+            <div class="row edit">
+
+                <div class="col-md-auto"><div id="array"></div></div>
+                <div class="col-md-auto" id="Infors">
+
+              
+
+                </div>
+              </div>
+              <button class="btn btn-success" type="button" onclick="test()">Testar</button>
+        </div>
+        
+</body>
+<script src="../js/includeNav.js"></script>
+
+<script src="../js/WriteAlelos.js"></script>
+<script src="../js/microLetra.js"></script>
+<script src="../js/WriteOptions.js"></script>
+<script src="../js/Quiz.js"></script>
+<script src="../js/CreateArray55.js"></script>
+<script src="../js/Main.js"></script>
+<script src="../js/QuizLista.js"></script>
+
+<script></script>
+</html>
