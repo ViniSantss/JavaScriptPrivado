@@ -1,0 +1,518 @@
+Alelos1 = ["b","B"]
+AlelosCount1 = 2;//!Redundante
+AlelosName1=["Baixo","Alto"]
+Alelos2 = ["c","C"]
+AlelosCount2 = 2;//!Redundante
+AlelosName2=["Curto","Longo"]
+EmptyCell = null;
+ImgCell = null;
+isDrag = false
+img1 = ["CoelhoBranco.png","cc"]
+img2 = ["CoelhoNegro.png","Cc","CC"]
+img3 = ["?","?"]
+img4 = ["?","?"]
+img5 = ["?","?"]
+img6 = ["?","?"]
+img7 = ["?","?"]
+img8 = ["?","?"]
+function CreateArray(){// * Cria e posiciona todos os dados na array Bi dimensional
+    document.getElementById("Options").style.display="none"
+//document.getElementById("editAlelos").style.display="none"
+document.getElementById("editOptions").style.display="block"
+document.getElementById("Table").style.display="block"
+
+    var X =3;//?Tamanho da Tabela na Vertical 
+    var Y =3;//?Tamanho da Tabela na Horizontal
+    var gametaI = new Array(X-1)//?Definição da Gameta do Pai
+    var gametaII = new Array(X-1)//?Definição da Gameta da Mãe
+    for (var i=0;i<gametaI.length;i++){
+        gametaI[i] = new Array(2)//?Faz 2 SubArray para os 2 alelos
+        gametaII[i] = new Array(2)//?Mesma coisa
+    }
+    
+            gametaI[0][0]=document.getElementById("gene1").value//!Tempoario: Posiciona os alelos na posição dejesada
+            gametaII[0][0]=document.getElementById("gene5").value
+
+            gametaI[1][0]=document.getElementById("gene2").value
+            gametaII[1][0]=document.getElementById("gene6").value
+        
+        
+    
+    
+        var tempObj =  new Array(X)//? Array tempoaria que será retonada para o metodo que foi puxado, X=Tamanho
+    for(var i=0;i<X;i++){
+        tempObj[i] = new Array(Y)//? Criação de Sub array 
+        for(j=0;j<Y;j++){
+            tempObj[0][0]="/"//! Primeira coluna tera nada
+            if(j==0 && i>=1){
+                tempObj[i][j]=gametaI[i-1][0]//! Gametas dos Pais, Horizontal
+                }
+                if(i==0 && j>=1){
+                tempObj[i][j]=gametaII[j-1][0]//! Gameta da mãe, Vertical
+                }
+                if(i>=1 && j>=1){
+            tempObj[i][j]= caps(gametaI[i-1][0],gametaII[j-1][0],1)//! Populações
+    
+            }
+        } 
+    }
+    return(tempObj)// * por fim retorna a array
+    }
+    
+    document.getElementById("nav").outerHTML=
+`<nav class="navbar navbar-expand-lg  navbar-dark bg-dark"  style="visibility: hidden;">
+<div class="container-fluid">
+<a class="navbar-brand" href="#">
+ <img src="../css/icon.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+   Mendel Legacy</a>
+   </nav>
+<nav class="navbar navbar-expand-lg  navbar-dark bg-dark fixed-top">
+  <div class="container-fluid">
+  <a class="navbar-brand" href="#">
+   <img src="../css/icon.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+     Mendel Legacy</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="leiMendel.html">Leis de Mendel</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Gerador de Quadro de Punnett
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark">
+        <li><a class="dropdown-item" href="2x2.html">2x2</a></li>
+        <li><a class="dropdown-item" href="4x4.html">4x4</a></li>
+        
+      </ul>
+    </li>
+
+
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Quiz de Quadro de Punnett
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark">
+        <li><a class="dropdown-item" href="Quiz2x2.html">2x2</a></li>
+        <li><a class="dropdown-item" href="Quiz4x4.html">4x4</a></li>
+        
+      </ul>
+    </li>
+
+  </ul>
+    </div>
+  </div>
+</nav>
+
+
+`
+document.getElementById("footer").outerHTML=
+`
+<div class="container">
+    <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+      <div class="col mb-3">
+        <a class="navbar-brand" href="#">
+            <img src="../css/icon.jpg" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+            </a>
+        <p class="text-muted">© 2024</p>
+      </div>
+  
+      <div class="col mb-3">
+  
+      </div>
+  
+      <div class="col mb-3">
+        <h5>Textos informativos</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="home.html" class="nav-link p-0 text-muted">Home</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+          <li class="nav-item mb-2"><a href="leiMendel.html" class="nav-link p-0 text-muted">Leis de Mendel</a></li>
+        </ul>
+      </div>
+  
+      <div class="col mb-3">
+        <h5>Tabelas</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="2x2.html" class="nav-link p-0 text-muted">Quadro de Punnett 2x2</a></li>
+          <li class="nav-item mb-2"><a href="4x4.html" class="nav-link p-0 text-muted">Quadro de Punnett 4x4</a></li>
+        </ul>
+      </div>
+  
+      <div class="col mb-3">
+        <h5>Quiz</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="Quiz2x2.html" class="nav-link p-0 text-muted">Quadro de Punnett 2x2</a></li>
+          <li class="nav-item mb-2"><a href="Quiz4x4.html" class="nav-link p-0 text-muted">Quadro de Punnett 4x4</a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+
+`
+
+
+WriteAlelos()//TODO: Cria os alelos
+function ButtonClick(){// * Botão clicado
+    Array2 = CreateArray()//TODO:Cria a Array
+    WriteArray(Array2, "array")//TODO:Imprime ela na Tela
+}
+
+
+
+function caps(str1, str2, str3){
+var first=str1;
+var firstId=0;
+var second=str2;
+var secondId=0;
+for(var i=0;i<eval('Alelos'+str3+'.length');i++){
+    if(eval('Alelos'+str3+'[i]==first')){
+        firstId=i
+    }
+    if(eval('Alelos'+str3+'[i]==second')){
+        secondId=i
+    }
+}
+    if(firstId<secondId){
+        first=str2;
+        second=str1;  
+    }
+    return(first+second)
+}
+
+function microLetter(Str){
+    const Micro = {
+        A: "ᵃ", B: "ᵇ", C: "ᶜ", D: "ᵈ", E: "ᵉ",
+        F: "ᶠ", G: "ᵍ", H: "ʰ", I: "ᶦ", J: "ʲ",
+        K: "ᵏ", L: "ˡ", M: "ᵐ", N: "ⁿ", O: "ᵒ",
+        P: "ᵖ", Q: "ᑫ", R: "ʳ", S: "ˢ", T: "ᵗ",
+        U: "ᵘ", V: "ᵛ", W: "ʷ", X: "ˣ", Y: "ʸ",
+        Z: "ᶻ"
+    };
+
+var result = Str.replace(/[A-Z]/g, matchedLetter => Micro[matchedLetter]);
+
+return(result)
+}
+function WriteArray(Obj, Div){
+    console.log(Obj)
+var base="";
+    for(let i in Obj){
+        base+='<div class="row">'
+        for(var j=0;j<Obj[i].length;j++){
+if (i==0 || j==0){base+='<div class="cell">'+Obj[i][j]+' <span class="tooltiptext">'+(1+parseInt(i))+"x"+(1+parseInt(j))+'</span></div>'
+}else{
+    base+='<div class="cell" id="nullcell'+i+'j'+j+'"  ondragover="drophover(this)" onclick="dropMobile(this)"><span class="tooltiptext">'+(1+parseInt(i))+"x"+(1+parseInt(j))+'</span></div>'
+}
+        }
+        base+='</div>'
+}
+document.getElementById(Div).innerHTML=base
+}
+
+
+function drophover(Cell) {
+  if(isDrag== true){
+    EmptyCell=Cell
+  }
+}
+  function drag(Img) {
+    isDrag=true
+    
+    ImgCell=Img
+    
+    
+  }
+
+  if(mobileCheck()==true){
+  function dragMobile(Img) {
+    if(ImgCell !=null ){
+    ImgCell.style.border="none"
+    if(ImgCell == Img){
+    console.log(Img)
+
+    Img.style.border="none"
+      ImgCell = null
+    }else{
+      ImgCell=Img
+      Img.style.border="solid 2px #555555"
+    }
+    }else{
+    ImgCell=Img
+    Img.style.border="solid 2px #555555"
+    }
+    
+  }
+  function dropMobile(Cell){
+    EmptyCell=Cell
+    drop()
+  }
+}
+  function drop() {
+    isDrag = false
+    if(ImgCell !=null){
+    ImgCell.style.border="none"
+    if(EmptyCell !=null){
+    EmptyCell.innerHTML='<img src='+ImgCell.src+'>'
+    EmptyCell = null;
+    ImgCell = null;
+  }
+  }
+ 
+  }
+  
+
+  function test(){
+    for(let i in Array2){
+      for(let j in Array2[i]){
+        if(i>0 && j>0){
+let TempSrc = document.getElementById('nullcell'+i+'j'+j).firstChild.src
+if(typeof TempSrc != "undefined"){
+let TempImg = TempSrc.replace(/^.*[\\\/]/, '')
+for(let k=1;k<=9;k++){
+  console.log(TempImg, img1[0])
+  if(k==9){
+    document.getElementById('nullcell'+i+'j'+j).style.backgroundColor="#FF0055"// ! Falso
+  }else if(eval('img'+k+'.includes(Array2[i][j]) && TempImg==img'+k+'[0]')){
+    document.getElementById('nullcell'+i+'j'+j).style.backgroundColor="#00FF55"// * Verdadeiro
+    break;
+  }
+}
+}else{
+  document.getElementById('nullcell'+i+'j'+j).style.backgroundColor="#FF0055"// ! Falso
+}
+
+
+          
+        }
+      }
+    }
+  }
+  function editEspecie(){
+    document.getElementById("Lista").style.display="block"
+    document.getElementById("Options").style.display="block"
+document.getElementById("editEspecie").style.display="none"
+document.getElementById("editOptions").style.display="none"
+document.getElementById("Options").innerHTML=""
+document.getElementById("questao").innerHTML=""
+document.getElementById("array").innerHTML=""
+document.getElementById("Infors").innerHTML=""
+document.getElementById("Table").style.display="none"
+}
+
+function Lista(Especie){
+document.getElementById("Lista").style.display="none"
+document.getElementById("editEspecie").style.display="block"
+    
+switch(Especie){
+case "Coelhos1":
+    img1=["CoelhoNegro.png","CC","Cc"]//Meio a Meio
+    img2=["CoelhoBranco.png","cc"]
+    AlelosName1=["c","C"]
+    document.getElementById("questao").innerHTML = 'ºQuiz: Dois pares de coelhos tiveram uma ninhada, dito que "c" define a coloração de pelo branco, e C define a coloração negra, sendo branco uma caracteristica resseciva'
+
+    WriteAlelos()
+    WriteOptions()
+break;
+case "Carangueijos1":
+    img1=["grande.png","GG","Gg"]//Meio a Meio
+    img2=["pequeno.png","gg"]
+    AlelosName1=["g","G"]
+    WriteAlelos()
+    WriteOptions()
+    document.getElementById("questao").innerHTML='ºQuiz: Dois pares de caranguejo tiveram teram varios caranguejo bebês, dito que "g" define um caranguejo com uma garra pequena, e "G" define uma garra maior, sendo "g" uma caracteristica resseciva, indique a aparência de cada caranguejo'
+
+document.getElementById("foto").innerHTML=`<img src="../img/Caranguejo/pequeno.png" draggable="true" ondragend="drop()" ondragstart="drag(this)" onclick="dragMobile(this)"><img  src="../img/Caranguejo/grande.png" draggable="true" ondragend="drop(this)" ondragstart="drag(this)" onclick="dragMobile(this)">`
+break;
+case "Ervilhas1":
+    
+    img1=["SemArmLis.png","llVv","llVV"]//Meio a Meio
+    img2=["SemArmRug.png","LlVv","LLVv","LlVV","LLVV"]//Total Dominante
+    img3=["SemVerLis.png","llvv"]//Total Ressecivo
+    img4=["SemVerRug.png","Llvv","LLvv"]// Meio a meio
+AlelosCount1=2
+    AlelosName1=["l","L"]
+    AlelosName2=["v","V"]
+WriteAlelos()
+    WriteOptions()
+    document.getElementById("questao").innerHTML = 'ºQuiz: Dois pares de ervilhas fecundaram, dito que "l" define que ela é lisa, "L" define que é rugosa,"V" que ela é amarela e "v" que ela é verde, sendo v e l uma caracteristica resseciva'
+document.getElementById("foto").innerHTML=`
+<img src="../img/Sementes/SemArmLis.png" draggable="true" ondragend="drop()" ondragstart="drag(this)" onclick="dragMobile(this)">
+<img src="../img/Sementes/SemArmRug.png" draggable="true" ondragend="drop()" ondragstart="drag(this)" onclick="dragMobile(this)">
+<img src="../img/Sementes/SemVerLis.png" draggable="true" ondragend="drop()" ondragstart="drag(this)" onclick="dragMobile(this)">
+<img src="../img/Sementes/SemVerRug.png" draggable="true" ondragend="drop()" ondragstart="drag(this)"onclick="dragMobile(this)">
+`
+break;
+case "Arvores1":
+    img1=["ArvBaiSem.png","bbFf","bbFF"]//Meio a Meio
+    img2=["ArvAltSem.png","BbFf","BbFF","BBFf","BBFF"]//Total Dominante
+    img3=["ArvBaiCom.png","bbff"]//Total Ressecivo
+    img4=["ArvAltCom.png","Bbff","BBff"]// Meio a meio
+AlelosCount1=2
+    AlelosName1=["b","B"]
+    AlelosName2=["f","F"]
+WriteAlelos()
+    WriteOptions()
+    document.getElementById("questao").innerHTML='ºQuiz: Dois pares de árvores frutíferas fecundaram, dito que "b" define que ela é baixa, "B" define que é alta,"f" que ela possui frutos e "F" que ela é não possui frutos, sendo f e b uma caracteristica resseciva'
+
+document.getElementById("foto").innerHTML=`
+<img src="../img/Arvores/ArvBaiSem.png" draggable="true" ondragend="drop()" ondragstart="drag(this)" onclick="dragMobile(this)">
+<img src="../img/Arvores/ArvAltCom.png" draggable="true" ondragend="drop()" ondragstart="drag(this)" onclick="dragMobile(this)">
+<img src="../img/Arvores/ArvAltSem.png" draggable="true" ondragend="drop()" ondragstart="drag(this)" onclick="dragMobile(this)">
+<img src="../img/Arvores/ArvBaiCom.png" draggable="true" ondragend="drop()" ondragstart="drag(this)"onclick="dragMobile(this)">
+`
+break;
+case "Coelhos2":
+    img1=["CoelhoCinzaCom.png","Aᶜamm","AᶜAᶜmm"]
+    img2=["CoelhoBrancoSem.png","aaMm","aaMM"]
+    img3=["CoelhoBrancoCom.png","aamm"]
+    img4=["CoelhoCinzaSem.png","AᶜaMm","AᶜAᶜMm","AᶜaMM","AᶜAᶜMM"]
+    img5=["CoelhoNegroCom.png","Aⁿamm","AⁿAᶜmm","AⁿAⁿmm"]
+    img6=["CoelhoNegroSem.png","AⁿaMm","AⁿAᶜMm","AⁿAⁿMm","AⁿaMM","AⁿAᶜMM","AⁿAⁿMM"]
+    AlelosCount1=3
+    AlelosName1=["a","c","n"]
+    AlelosName2=["m","M"]
+WriteAlelos()
+    WriteOptions()
+    document.getElementById("questao").innerHTML='ºQuiz: Dois pares de coelhos tiveram uma ninhada, dito que "a" define a coloração de pelo albino, "Aᶜ" define a coloração chincila, "Aⁿ" define a coloração negra, "m" define um coelho com mancha e "M" sem mancha, sendo M > m, Aⁿ> Aᶜ > a, coloque os coelhos nos seus devidos lugares'
+
+document.getElementById("foto").innerHTML=`
+<img src="../img/Coelhos/CoelhoBrancoSem.png" draggable="true" ondragend="drop()" ondragstart="drag(this)" onclick="dragMobile(this)">
+            <img src="../img/Coelhos/CoelhoCinzaSem.png" draggable="true" ondragend="drop()" ondragstart="drag(this)" onclick="dragMobile(this)">
+            <img src="../img/Coelhos/CoelhoNegroSem.png" draggable="true" ondragend="drop()" ondragstart="drag(this)" onclick="dragMobile(this)">
+            <img src="../img/Coelhos/CoelhoBrancoCom.png" draggable="true" ondragend="drop()" ondragstart="drag(this)"onclick="dragMobile(this)">  
+    <img src="../img/Coelhos/CoelhoCinzaCom.png" draggable="true" ondragend="drop()" ondragstart="drag(this)"onclick="dragMobile(this)"> 
+     <img src="../img/Coelhos/CoelhoNegroCom.png" draggable="true" ondragend="drop()" ondragstart="drag(this)"onclick="dragMobile(this)">
+          `
+break;
+
+
+case "Sangues1":
+
+    img1=["Onegativo.png","iirr"];
+img2=["Opositivo.png","iirr","iiRr","iiRR"];
+   img3=["Bnegativo.png","Iᵇirr","IᵇIᵇrr"];
+  img4=["Bpositivo.png","IᵇiRr","IᵇIᵇRr","IᵇiRR","IᵇIᵇRR"];
+  img5=["Anegativo.png","Iᵃirr","IᵃIᵃrr"];
+   img6=["Apositivo.png","IᵃiRr","IᵃIᵃRr","IᵃiRR","IᵃIᵃRR"];
+   img7=["ABnegativo.png","IᵃIᵇrr","IᵃIᵇrr"];
+  img8=["ABpositivo.png","IᵃIᵇRr","IᵃIᵇRr","IᵃIᵇRR","IᵃIᵇRR"];
+AlelosCount1=3
+    AlelosName1=["i","B","A"]
+    AlelosName2=["rh","rh"]
+WriteAlelos()
+WriteOptions()
+
+
+
+document.getElementById("questao").innerHTML = 'ºQuiz: Dois pares de coelhos tiveram uma ninhada, dito que "c" define a coloração de pelo branco, e C define a coloração negra, sendo branco uma caracteristica resseciva'
+
+
+document.getElementById("foto").innerHTML=`
+<img src="../img/Sangues/Onegativo.png" draggable="true" ondragend="drop()" ondragstart="drag(this)" onclick="dragMobile(this)">
+<img src="../img/Sangues/Opositivo.png" draggable="true" ondragend="drop()" ondragstart="drag(this)" onclick="dragMobile(this)">
+<img src="../img/Sangues/Anegativo.png" draggable="true" ondragend="drop()" ondragstart="drag(this)" onclick="dragMobile(this)">
+<img src="../img/Sangues/Apositivo.png" draggable="true" ondragend="drop()" ondragstart="drag(this)" onclick="dragMobile(this)"><br>
+<img src="../img/Sangues/Bnegativo.png" draggable="true" ondragend="drop()" ondragstart="drag(this)" onclick="dragMobile(this)">
+<img src="../img/Sangues/Bpositivo.png" draggable="true" ondragend="drop()" ondragstart="drag(this)" onclick="dragMobile(this)">
+<img src="../img/Sangues/ABnegativo.png" draggable="true" ondragend="drop()" ondragstart="drag(this)" onclick="dragMobile(this)">
+<img src="../img/Sangues/ABpositivo.png" draggable="true" ondragend="drop()" ondragstart="drag(this)" onclick="dragMobile(this)">`
+
+
+
+
+
+break;
+
+}
+
+}
+
+
+
+WriteAlelos()
+function CalcNames(){
+    for(var k=1;k<=2;k++){
+        for(var j=0;j<eval('AlelosCount'+k);j++){
+            //console.log(AlelosName1,AlelosName2)
+            //console.log(eval('Alelos'+k+'['+j+']'))//=
+            //console.log(eval('document.getElementById("Alelo'+j+'G'+k+'").Value'))
+            //console.log('Alelo'+j+'G'+k)
+            if(document.getElementById("Alelo"+j+"G"+k).value !=""){
+            var TempValue = document.getElementById("Alelo"+j+"G"+k).value[0]
+            }else{
+                TempValue = "U"
+            }
+            var TempValue2 = document.getElementById("Alelo"+j+"G"+k).value
+            eval('AlelosName'+k+'['+j+']="'+TempValue2+'"')
+            if(j==0){
+                TempValue = TempValue.toLowerCase()
+                eval('Alelos'+k+'['+j+']="'+TempValue+'"')
+                }else if(eval('AlelosCount'+k)<=2){
+                    eval('Alelos'+k+'['+j+']=Alelos'+k+'['+0+'].toUpperCase()')
+                }else{
+
+                    
+                    eval('Alelos'+k+'['+j+']=Alelos'+k+'['+0+'].toUpperCase()+microLetter(TempValue.toUpperCase())')
+                }
+        }
+    }
+}
+
+function WriteAlelos(){
+    var base="";
+    for(var j=1;j<=2;j++){
+    base+='<div id="Alelos'+j+'">';
+        switch(j){
+            case 1: base+='Caracteristica 1:<br>';break;
+            case 2: base+='Caracteristica 2:<br>';
+        }
+        base+='<div class="row">'
+        
+ for(var i=0;i<eval('AlelosCount'+j);i++){
+if(mobileCheck()==true){//!Substituir
+base+='<div class="col-12">'
+}else{
+base+='<div class="col-3">'
+    
+}
+base+='<div class="input-group flex-nowrap">'
+base+=    '<span class="input-group-text" id="addon-wrapping">'
+switch(i){
+    case 0: base+='Alelo Recessivo ::';break;
+    case 1: base+='Alelo Dominante 1:';break;
+    default: base+='Alelo Dominante '+(i)+':';break;
+}
+base+=    '</span><input type="text" class="form-control" aria-label="Username" aria-describedby="addon-wrapping" id="Alelo'+i+'G'+j+'" onchange="CalcNames()" value="'+eval('AlelosName'+j+'[i]')+'"></div></div>'
+
+
+
+
+}
+base+='<div class="col-4"><button type="button" onclick="AddAlelo('+j+',(+1))" class="btn btn-outline-success">+Alelos</button>'
+
+if(eval('AlelosCount'+j)>2){
+    base+='<button type="button" onclick="AddAlelo('+j+',(-1))" class="btn btn-outline-danger">-Alelos</button>'
+}
+base+='</div></div></div><br>'
+}
+base+='<div class="d-grid gap-2 col-3 mx-auto"><button class="btn btn-primary" type="button" onclick="WriteOptions()">Pronto</button></div></div>   '
+document.getElementById("Alelos").innerHTML=base
+
+}
+function AddAlelo(int1,int2){
+    eval("AlelosCount"+int1+'+='+int2)
+    if(int2>0){
+    eval("AlelosName"+int1+'['+'AlelosCount'+(int1)+'-1]='+'""')
+    }
+    WriteAlelos()
+
+}
+function mobileCheck() {
+    let check = false;
+    (function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|a
