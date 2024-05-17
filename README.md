@@ -11,14 +11,14 @@
 
     
 4. Configure sua conexão com banco de dados no arquivo .env:
-
-    ``DB_CONNECTION=mysql``
-            ``DB_HOST=127.0.0.1``
-            ``DB_PORT=3306``
-            ``DB_DATABASE= "NOME_DO_BANCO_DE_DADOS" ``
-            ``DB_USERNAME=root``
-           `` DB_PASSWORD= "SENHA_DO_BANCO_DE_DADOS" ``
-    
+   ```bash
+    DB_CONNECTION=mysql
+            DB_HOST=127.0.0.1
+            DB_PORT=3306
+            DB_DATABASE= "NOME_DO_BANCO_DE_DADOS"
+            DB_USERNAME=root
+            DB_PASSWORD= "SENHA_DO_BANCO_DE_DADOS" 
+    ```
 
 5. Inicie as migration com o comando:
 
